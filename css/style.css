@@ -1,0 +1,231 @@
+:root {
+  /* 색상 */
+  --color-bg: #f7f7fb;
+  --color-surface: #ffffff;
+  --color-text: #1f2330;
+  --color-muted: #5b6072;
+  --color-accent: #4a6cf7;
+
+  /* 타이포그래피 */
+  --font-family: -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
+  --font-size-base: 17px;
+  --font-size-h1: 2.6rem;
+  --font-size-h2: 1.4rem;
+  --font-size-tagline: 1.15rem;
+
+  /* 레이아웃/간격 */
+  --content-max-width: 720px;
+  --section-gap: 48px;
+  --side-padding: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+/* 헤더 / 네비게이션 (모든 페이지 공통) */
+.site-header {
+  background: var(--color-surface);
+  border-bottom: 1px solid #e5e7ef;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header__inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 16px var(--side-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 20px;
+}
+
+.site-header nav a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-header nav a.active,
+.site-header nav a:hover {
+  color: var(--color-accent);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+}
+
+/* 페이지 상단 제목 (홈이 아닌 페이지에서 .hero 대신 사용) */
+.page-title {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 48px var(--side-padding) 0;
+}
+
+.page-title h1 {
+  font-size: 2rem;
+  margin: 0 0 8px;
+}
+
+.page-title p {
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* 프로젝트 카드 (projects.html) */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: var(--color-surface);
+  border: 1px solid #e5e7ef;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.project-card h3 {
+  margin: 0 0 8px;
+}
+
+.project-card p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.hero {
+  background: var(--color-surface);
+  padding: 72px var(--side-padding) 48px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7ef;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: var(--font-size-h1);
+}
+
+.hero .tagline {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--font-size-tagline);
+}
+
+main {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--section-gap) var(--side-padding);
+}
+
+section {
+  margin-bottom: var(--section-gap);
+}
+
+section h2 {
+  font-size: var(--font-size-h2);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 12px;
+  margin-bottom: 16px;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.links a {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--color-surface);
+  border: 1px solid #e5e7ef;
+  border-radius: 999px;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.links a:hover {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+footer {
+  text-align: center;
+  padding: 24px var(--side-padding) 48px;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-h1: 2rem;
+    --side-padding: 16px;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-header nav {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid #e5e7ef;
+    padding: 8px var(--side-padding) 16px;
+  }
+
+  .site-header nav.is-open {
+    display: flex;
+  }
+
+  .site-header nav a {
+    padding: 10px 0;
+  }
+}
